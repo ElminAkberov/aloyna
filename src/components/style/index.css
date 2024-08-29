@@ -1,0 +1,145 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+
+.space-grotesk {
+  font-family: "Space Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Brockmann";
+  src: url("/public/fonts/brockmann-medium.otf");
+}
+@font-face {
+  font-family:"Spartan" ;
+  src: url("/public/fonts/Spartan-Regular.ttf");
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+label[for="files"] {
+  border-radius: 10px;
+  padding: 5px 0px;
+  transition: .5s;
+  cursor: pointer;
+}
+
+
+.font-brockmann {
+  font-family: "Brockmann";
+}
+.spartan{
+  font-family:"Spartan" ;
+}
+
+.gradient-text {
+  font-weight: bold;
+  background-image: linear-gradient(to right, #97bdfd, #96c6fa, #9acdf6, #a3d4f2, #afdaed);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.gradient-blue {
+  font-weight: bold;
+  background-image: linear-gradient(to right top, #98bffc, #b3c9fd, #c9d4fd, #dce0fd, #ededfe, #ededfe, #ededfe, #ededfe, #dce0fd, #c9d4fd, #b3c9fd, #98bffc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.gradient-blues {
+  font-weight: bold;
+  background-image: radial-gradient(circle, #31567c, #244567, #173553, #0a2640, #00172e);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+
+.shake {
+  transform: rotate(0deg);
+  transition: transform 0.4s ease;
+}
+
+button:hover>.shake {
+  transform: rotate(30deg);
+}
+
+.container {
+  display: block;
+  position: relative;
+  padding-left: 24px;
+  margin: 5px 0;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: transparent;
+  border: 1px solid #fff;
+  border-radius: 2px;
+}
+
+.container input:checked~.checkmark {
+  background-color: #012136;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.container input:checked~.checkmark:after {
+  display: block;
+}
+
+.container .checkmark:after {
+  left: 7.5px;
+  top: 4px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.xahis {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  visibility: collapse;
+}
+
+.info:hover + .xahis {
+  opacity: 1;
+  visibility: visible;
+}

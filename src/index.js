@@ -1,17 +1,82 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+import App from './components/App';
+import { createBrowserRouter, RouterProvider, } from "react-router-dom";
+import SignIn from './components/SignIn';
+import SignUp from './components/SignUp';
+import ForgetPassword from './components/ForgetPassword';
+import MainLayout from './components/MainLayout';
+import AuthLayout from './components/AuthLayout';
+import AdminPanel from './components/AdminPanel';
+import Add from './components/Add';
+import Update from './components/Update';
+import Details from './components/Details';
+import UpdateProfile from './components/UpdateProfile';
+import Fav from './components/Fav';
+import Info from './components/Info';
+import Rules from './components/Rules';
+const router = createBrowserRouter([
+  {
+    path: "/", element: <MainLayout />, children: [
+      {
+        path: "/",
+        element: <div><App /></div>,
+      },
+      {
+        path: "/user",
+        element: <AdminPanel />
+      },
+      {
+        path: "/add",
+        element: <Add />
+      },
+      {
+        path: "/update/:params",
+        element: <Update />
+      },
+      {
+        path: "/details/:params",
+        element: <Details />
+      },
+      {
+        path: "/updateuser",
+        element: <UpdateProfile />
+      }
+      ,
+      {
+        path: "/fav",
+        element: <Fav />
+      }
+      ,
+      {
+        path: "/info",
+        element: <Info />
+      }
+      ,
+      {
+        path: "/rules",
+        element: <Rules />
+      }
+    ]
+  },
+  {
+    path: "/", element: <AuthLayout />, children: [
+      {
+        path: "sign-in",
+        element: <div><SignIn /></div>,
+      },
+      {
+        path: "sign-up",
+        element: <div><SignUp /></div>,
+      },
+      {
+        path: "forget",
+        element: <div><ForgetPassword /></div>,
+      },
+    ]
+  }
+]);
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <RouterProvider router={router} />
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
