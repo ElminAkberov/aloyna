@@ -61,11 +61,11 @@ const SignIn = () => {
                         <div className="text-red-600">{error && `Məlumatları düzgün daxil edin`}</div>
                         <div className="">
                             <label htmlFor="name" className='font-bold '>Email adresiniz</label>
-                            <input type="email" placeholder='Email daxil et' required className='block  shadow-xl outline-none placeholder:text-[#414142] my-1 bg-transparent border border-white rounded-sm p-2 px-3' value={email} onChange={(e) => { setEmail(e.target.value) }} style={{ display: "block" }} />
+                            <input type="email" placeholder='Email daxil et' required className='block w-full  shadow-xl outline-none placeholder:text-[#414142] my-1 bg-transparent border border-white rounded-sm p-2 px-3' value={email} onChange={(e) => { setEmail(e.target.value) }} style={{ display: "block" }} />
                         </div>
                         <div className="">
                             <label htmlFor="name" className='font-bold '>Şifrə</label>
-                            <input type="text" placeholder='Şifrəni daxil et' required className='block  shadow-xl outline-none placeholder:text-[#414142] my-1 bg-transparent border border-white rounded-sm p-2 px-3' value={password} onChange={(e) => { setPassword(e.target.value) }} style={{ display: "block" }} />
+                            <input type="text" placeholder='Şifrəni daxil et' required className='block w-full  shadow-xl outline-none placeholder:text-[#414142] my-1 bg-transparent border border-white rounded-sm p-2 px-3' value={password} onChange={(e) => { setPassword(e.target.value) }} style={{ display: "block" }} />
                         </div>
                         
                         <button type="submit" className='justify-center  gap-x-3 items-center flex w-full hover:bg-[#00172E] hover:shadow-xl duration-[400ms] bg-[#012136] text-white py-2 rounded-sm mt-2'>Daxil ol</button>
