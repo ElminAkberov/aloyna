@@ -68,7 +68,7 @@ const SignIn = () => {
                             <input type="text" placeholder='Şifrəni daxil et' required className='block w-full  shadow-xl outline-none placeholder:text-[#414142] my-1 bg-transparent border border-white rounded-sm p-2 px-3' value={password} onChange={(e) => { setPassword(e.target.value) }} style={{ display: "block" }} />
                         </div>
                         
-                        <button type="submit" className='justify-center  gap-x-3 items-center flex w-full hover:bg-[#00172E] hover:shadow-xl duration-[400ms] bg-[#012136] text-white py-2 rounded-sm mt-2'>Daxil ol</button>
+                        <button type="submit" className=' w-full hover:bg-[#00172E] hover:shadow-xl duration-[400ms] bg-[#012136] text-white py-2 rounded-sm mt-2'>Daxil ol</button>
                         <p className={"text-right text-[#386cce]  hover:underline"}><NavLink to={"/forget"} >Şifrəni unuttun?</NavLink></p>
                         <p className='text-center '>Hesabın yoxdur? <NavLink to={"/sign-up"} className={"text-[#386cce] hover:underline"}>Qeydiyyat</NavLink></p>
                     </form>
