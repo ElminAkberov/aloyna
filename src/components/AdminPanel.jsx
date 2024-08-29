@@ -93,7 +93,8 @@ const AdminPanel = () => {
             </div>
           ))}
         </ul>
-        : <h3 className='text-[20px] text-center py-[91.5px] '>Hal hazırda aktiv olan elanınız yoxdur </h3>
+        : <h3 className='text-[20px] text-center py-44'>Hal hazırda aktiv olan elanınız yoxdur <NavLink to={"/add"} className={"text-[#338cce] underline"}>Yeni elan yarat</NavLink></h3> 
+        // py-[91.5px] 
       }
 
     </div>

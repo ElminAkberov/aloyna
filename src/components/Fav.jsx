@@ -115,7 +115,7 @@ const App = () => {
                             </>
                         ))}
                     </ul>
-                    : <h3 className='text-[20px] text-center py-[147px]'>Hal hazırda seçilmiş olan elan yoxdur</h3>
+                    : <h3 className='text-[20px] text-center py-[147px]'>Hal hazırda seçilmiş olan elan yoxdur. <br /> <NavLink to={"/"} className={"text-[#338cce] underline"}>Ana səhifəyə qayıt</NavLink></h3>
 
                 }
             </div>

@@ -206,7 +206,7 @@ const App = () => {
               }
             </div>
           </>
-          : <h3 className='text-[20px] text-center py-44'>Hal hazırda aktiv olan elan yoxdur</h3>
+          : <h3 className='text-[20px] text-center py-44'>Hal hazırda aktiv olan elan yoxdur <br /> <NavLink to={"/add"} className={"text-[#338cce] underline"}>Yeni elan Yarat</NavLink></h3>
         }
       </div>
 
