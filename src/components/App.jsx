@@ -210,27 +210,6 @@ const App = () => {
         }
       </div>
 
-
-      {/* <div className="h-[10vh] md:opacity-0 md:invisible z-40 space-grotesk text-[#212630] flex justify-between  shadow-[0_0_15px_#fff] duration-300 bg-white w-full left-0 fixed bottom-0 py-1 px-[30px]">
-        <NavLink to={"/"}>
-          <div className='flex flex-col items-center '>
-            <GrGamepad fill='gradient-text' className=' text-[30px] ' />
-            <h4 className=''>Əsas</h4>
-          </div>
-        </NavLink>
-        <NavLink to={"/add"}>
-          <div className='flex flex-col items-center  '>
-            <MdGamepad className='relative bottom-4 bg-[#171A21] min-h-[40px] text-[#fff] rounded-full scale-125  text-[40px]' />
-            <h4 className='font-bold relative bottom-2'>Elan Yarat</h4>
-          </div>
-        </NavLink>
-        <NavLink to={"/user"}>
-          <div className='flex flex-col items-center'>
-            <img src={`${(user.photoURL && user.photoURL.includes("undefined") || !user.photoURL) ? "https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg" : user.photoURL} `} className='w-[30px] h-[30px] mx-auto rounded-full object-cover' alt="" />
-            <h4>Profil</h4>
-          </div>
-        </NavLink>
-      </div> */}
     </div>
 
   );
