@@ -140,7 +140,7 @@ const App = () => {
   }
   return (
     <div className='space-grotesk'>
-      <button onClick={handleUp} className='text-[20px] bg-[#98BFFC] fixed bottom-10 md:m-7 md:my-3 m-6 my-7 p-3 rounded-md right-0 z-40'><FaArrowUp /></button>
+      <button onClick={handleUp} className='text-[20px] bg-[#98BFFC] fixed bottom-10 md:m-7 md:my-3 m-6 my-14 p-3 rounded-md right-0 z-40'><FaArrowUp /></button>
       <h1 className='text-[35px] max-lg:text-[25px] py-5 space-grotesk'>Bütün Elanlar</h1>
       <h3 className='text-[25px] my-3'>Elan Axtar</h3>
       <div className="flex max-[450px]:flex-col justify-between gap-x-5 duration-300 mx-auto pb-10">

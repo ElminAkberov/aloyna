@@ -49,7 +49,7 @@ const Footer = () => {
               <hr className='border-[1.5px] my-1 border-[#95BBFE] ' />
             </div>
             <div className="flex text-[20px] justify-center gap-x-2 ">
-              <NavLink><FaInstagram /></NavLink>
+              <NavLink to={"https://www.instagram.com/aloyna.az/"} target='_blank'><FaInstagram /></NavLink>
               <NavLink><FaFacebookF /></NavLink>
               <NavLink><FaXTwitter /></NavLink>
             </div>

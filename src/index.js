@@ -15,64 +15,28 @@ import UpdateProfile from './components/UpdateProfile';
 import Fav from './components/Fav';
 import Info from './components/Info';
 import Rules from './components/Rules';
+import NotFound from './components/NotFound';
 const router = createBrowserRouter([
   {
     path: "/", element: <MainLayout />, children: [
-      {
-        path: "/",
-        element: <div><App /></div>,
-      },
-      {
-        path: "/user",
-        element: <AdminPanel />
-      },
-      {
-        path: "/add",
-        element: <Add />
-      },
-      {
-        path: "/update/:params",
-        element: <Update />
-      },
-      {
-        path: "/details/:params",
-        element: <Details />
-      },
-      {
-        path: "/updateuser",
-        element: <UpdateProfile />
-      }
-      ,
-      {
-        path: "/fav",
-        element: <Fav />
-      }
-      ,
-      {
-        path: "/info",
-        element: <Info />
-      }
-      ,
-      {
-        path: "/rules",
-        element: <Rules />
-      }
+      {path: "/",element: <div><App /></div>,},
+      {path: "/user",element: <AdminPanel />},
+      {path: "/add",element: <Add />},
+      {path: "/update/:params",element: <Update />},
+      {path: "/details/:params",element: <Details />},
+      {path: "/updateuser",element: <UpdateProfile />},
+      {path: "/fav",element: <Fav />},
+      {path: "/info",element: <Info />},
+      {path: "/rules",element: <Rules />},
+      {path: "*",element: <NotFound />}
     ]
   },
   {
     path: "/", element: <AuthLayout />, children: [
-      {
-        path: "sign-in",
-        element: <div><SignIn /></div>,
-      },
-      {
-        path: "sign-up",
-        element: <div><SignUp /></div>,
-      },
-      {
-        path: "forget",
-        element: <div><ForgetPassword /></div>,
-      },
+      {path: "sign-in",element: <div><SignIn /></div>},
+      {path: "sign-up",element: <div><SignUp /></div>},
+      {path: "forget",element: <div><ForgetPassword /></div>,},
+      {path: "*",element: <NotFound />}
     ]
   }
 ]);
