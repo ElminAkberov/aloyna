@@ -34,7 +34,6 @@ const SignIn = () => {
                 }
             });
     };
-
     const handleChange = (e) => {
         e.preventDefault()
         if (!loading && user) {
@@ -51,7 +50,6 @@ const SignIn = () => {
     const handleCheck = (e) => {
         setCheck(e.target.checked)
     }
-
     return (
         <div>
             <div className='overflow-hidden flex flex-col items-center justify-center relative h-[100vh] space-grotesk '>

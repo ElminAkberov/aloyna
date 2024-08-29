@@ -9,6 +9,7 @@ import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
 import Typewriter from "typewriter-effect";
 import { IoGameControllerOutline } from 'react-icons/io5'
 import { FaInfo } from 'react-icons/fa'
+import { ScaleLoader } from 'react-spinners'
 const SignUp = () => {
     let navigate = useNavigate()
     let [error, setError] = useState("")
@@ -24,25 +25,26 @@ const SignUp = () => {
         let file = e.target.files[0]
         setFile(file)
     }
-
+    let [click, setClick] = useState(false)
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             await createUserWithEmailAndPassword(auth, email, password);
             const user = auth.currentUser;
-
+            setClick(true)
             const storageRef = ref(storage, `profiles/${file.name}-${new Date().getTime()}`);
             await uploadBytes(storageRef, file);
             const fileUrl = await getDownloadURL(storageRef);
             await updateProfile(user, { photoURL: fileUrl, displayName: name });
             setError(false)
-            navigate("/sign-in")
+            setTimeout(() => {
+                navigate("/sign-in")
+            }, 2000)
         } catch (error) {
             setError(true)
             console.error(error);
         }
     };
-    console.log(user)
     return (
         <>
             <div className='overflow-hidden flex flex-col items-center justify-center relative h-[100vh] space-grotesk '>
@@ -68,9 +70,16 @@ const SignUp = () => {
                             <label htmlFor="password" className='font-bold'>Şifrə</label>
                             <input type="password" placeholder='Şifrəni daxil et' value={password} onChange={(e) => { setPassword(e.target.value) }} required className='block shadow-md placeholder:text-[#414142] my-1 outline-none bg-transparent border border-white rounded-sm p-2 px-3' />
                         </div>
+
                         <button type="submit" className='justify-center  gap-x-3 items-center flex w-full hover:bg-[#00172E] hover:shadow-xl duration-[400ms] bg-[#012136] text-white py-2 rounded-sm mt-2'>
-                            Hesab yarat
-                            <IoGameControllerOutline className='text-[20px]  shake' />
+                            {click && !error ? (
+                                <ScaleLoader color='#fff' className='scale-75' />
+                            ) : (
+                                <>
+                                    Hesab yarat <IoGameControllerOutline className='text-[20px] shake' />
+                                </>
+                            )}
+
                         </button>
                         <p className='text-center  mt-2'>Hesabın var ? <NavLink to={"/sign-in"} className={"text-[#386cce] underline"}>Daxil ol</NavLink></p>
                     </form>
