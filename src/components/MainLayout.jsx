@@ -43,7 +43,7 @@ const MainLayout = () => {
     return (
         <>
             <Header />
-            <div className="bg-[#171A21]  text-white">
+            <div className="bg-[#171A21] pb-28  text-white">
                 <div className='mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 '>
                     <Outlet />
                     <div className="h-[10vh] md:opacity-0 md:invisible z-40 space-grotesk text-[#212630] flex justify-between  shadow-[0_0_15px_#fff] duration-300 bg-white w-full left-0 fixed bottom-0 py-1 px-[30px]">

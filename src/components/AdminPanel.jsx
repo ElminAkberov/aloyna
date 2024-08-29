@@ -59,7 +59,7 @@ const AdminPanel = () => {
   }
 
   return (
-    <div className='space-grotesk'>
+    <div className={`space-grotesk  ${userData.length <= 4 && "h-[80vh]"}`}>
 
       <h1 className='text-[35px] max-lg:text-[25px] py-5'>Şəxsi kabinet</h1>
       <h3 className='text-[30px] '>Xoş gəldin,<span className='font-bold'>{user.displayName}</span></h3>
@@ -93,7 +93,7 @@ const AdminPanel = () => {
             </div>
           ))}
         </ul>
-        : <h3 className='text-[20px] text-center py-[91.5px]'>Hal hazırda aktiv olan elanınız yoxdur </h3>
+        : <h3 className='text-[20px] text-center py-[91.5px] '>Hal hazırda aktiv olan elanınız yoxdur </h3>
       }
 
     </div>
