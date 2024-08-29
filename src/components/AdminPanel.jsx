@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { collection, query, where, getDocs, deleteDoc } from 'firebase/firestore';
 import { db, auth, storage } from '../firebase';
-import { updateProfile } from 'firebase/auth';
+import { signOut, updateProfile } from 'firebase/auth';
 import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
 import { NavLink } from 'react-router-dom';
 import { PacmanLoader } from 'react-spinners';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 const AdminPanel = () => {
   const user = auth.currentUser;
@@ -17,7 +18,8 @@ const AdminPanel = () => {
 
   let fav = localStorage.getItem("fav")
   let newFav = JSON.parse(fav)
-  console.log(user)
+
+ 
   const handleDelete = async (itemId) => {
     try {
       const q = query(collection(db, "users"), where("id", "==", itemId));
@@ -45,7 +47,9 @@ const AdminPanel = () => {
     localStorage.setItem("fav", JSON.stringify(newFav));
     return newFav
   };
-
+  const handleSignOut = () => {
+    signOut(auth)
+  }
   if (userLoading) {
     return (
       <div className='w-full absolute flex justify-center items-center left-0 top-0 h-[100vh] z-40 bg-[#171A21] '>
@@ -59,8 +63,9 @@ const AdminPanel = () => {
 
       <h1 className='text-[35px] max-lg:text-[25px] py-5'>Şəxsi kabinet</h1>
       <h3 className='text-[30px] '>Xoş gəldin,<span className='font-bold'>{user.displayName}</span></h3>
-      <NavLink to={"/updateuser"}><button className='underline text-[17px] '>Profili yenilə</button></NavLink>
       <NavLink to={"/fav"}><button className='underline md:hidden block'>Seçilmişlərə get</button></NavLink>
+      <NavLink to={"/updateuser"}><button className='underline text-[17px] '>Profili yenilə</button></NavLink>
+      <div><button onClick={handleSignOut} className='underline md:hidden block'>Çıxış et</button></div>
       <div className="flex flex-col mx-auto w-max">
         <h4 className='text-[25px] '>Elanlarım</h4>
         <hr className='border-blue-400 border-2' />

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { db, auth, storage } from '../firebase';
-import { updatePassword, updateProfile } from 'firebase/auth';
+import { deleteUser, updatePassword, updateProfile } from 'firebase/auth';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
@@ -51,6 +51,10 @@ const UpdateProfile = () => {
             console.error("User is not authenticated.");
         }
     }
+    const handleDelete = () => {
+        const user = auth.currentUser;
+        deleteUser(user)
+    }
     const deleteProfile = () => {
         updateProfile(user, {
             photoURL: ""
@@ -58,7 +62,7 @@ const UpdateProfile = () => {
     }
     console.log(name)
     return (
-        <div className='space-grotesk'>
+        <div className='space-grotesk py-5'>
             <h1 className='text-[35px] max-lg:text-[25px] py-5 space-grotesk'>Profil yenilə</h1>
             {show && "Profil yeniləndi.Dəyişikləri görmək üçün zəhmət olmasa ekranı yeniləyin."}
             <form onSubmit={handleSubmit} className='mt-5'>
@@ -75,6 +79,7 @@ const UpdateProfile = () => {
                 </div>
                 <button type='submit' className='justify-center  gap-x-3 items-center flex w-full hover:bg-[#00172E] hover:shadow-xl duration-[400ms] bg-[#012136] text-white py-2 rounded-sm mt-2'>Dəyiş</button>
             </form>
+            <button onClick={handleDelete} className='justify-center  gap-x-3 items-center flex w-full hover:bg-[#00172E] hover:shadow-xl duration-[400ms] bg-[#012136] text-white py-2 rounded-sm mt-2'>Hesabı sil</button>
         </div>
     )
 }
