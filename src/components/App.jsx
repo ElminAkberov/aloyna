@@ -186,7 +186,7 @@ const App = () => {
                       <div className='relative w-max group overflow-hidden max-[556px]:w-full'>
                         <div className='max-[556px]:w-full '>
                           <button onClick={(e) => handleDec(e, item.id)} className={`absolute z-20 bg-[#CED0CF] ${count[item.id] == 0 ? "opacity-20 pointer-events-none" : "opacity-30"} group-hover:opacity-100 duration-300 text-black p-3 top-20 `}><IoIosArrowBack /></button>
-                          <div className={`absolute text-[25px] right-0 p-2 cursor-pointer z-30 ${infos && infos[0] && infos[0][user.uid] && infos[0][user.uid][item.id] ? 'text-red-500' : ''}`} onClick={e => handleShow(item.id)}><FaHeart /></div>
+                          <div className={`absolute text-[25px] right-0 p-2 cursor-pointer z-30 ${infos && infos[0] && infos[0][user.uid] && infos[0][user.uid][item.id] ? 'text-red-500' : 'drop-shadow-[0_20px_20px_#171A21]'}`} onClick={e => handleShow(item.id)}><FaHeart /></div>
                           <h4 className='absolute right-0 bottom-0 p-3 text-[12px]  spartan font-semibold z-30'>AlOyna.az</h4>
                           <img src={item.imageUrls[count[item.id]]} alt="" className='w-[250px] group-hover:scale-110  max-[556px]:w-full max-[1200px]:w-[220px] max-md:w-[250px] max-md:h-[150px] duration-300 max-[1200px]:h-[150px] h-[220px] object-cover' />
                           <button onClick={(e) => handleInc(e, item.id)} className={`absolute  z-20 bg-[#CED0CF] ${maxImg < count[item.id] + 1 ? "opacity-20 pointer-events-none" : "opacity-30"}  group-hover:opacity-100 duration-300 text-black p-3 top-20 right-0`}><IoIosArrowForward /></button>

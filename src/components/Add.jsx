@@ -6,6 +6,7 @@ import { updateProfile } from 'firebase/auth';
 import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
 import { Navigate, NavLink, useNavigate } from 'react-router-dom';
 import { IoMdClose } from 'react-icons/io';
+import { BarLoader, FadeLoader, HashLoader } from 'react-spinners';
 
 const App = () => {
     let [img, setImg] = useState([])
@@ -13,7 +14,7 @@ const App = () => {
     const [cat, setCat] = useState("")
     const [info, setInfo] = useState({})
     let [error, setError] = useState(false)
-
+    let [load, setLoad] = useState(false)
     const [files, setFiles] = useState([]);
     const user = auth.currentUser;
     const allDataRef = collection(db, "users");
@@ -31,14 +32,19 @@ const App = () => {
         const maxFiles = 5;
 
         if (invalidFiles.length > 0) {
+            setLoad(false)
             alert('Bəzi şəkillər 2 MB\'ı aşan ölçülərdədi. Xahiş olunur uyğun ölçüdə şəkillər seçin.');
         }
         if (validFiles.length > maxFiles) {
+            setLoad(false)
             alert(`Maksimum ${maxFiles} şəkil yükləyə bilərsiniz.`);
             return;
         }
-        let fileUrls = [];
         if (validFiles.length > 0) {
+            setLoad(true)
+            setTimeout(() => {
+                setLoad(false)
+            }, 3000)
             let fileUrls = [];
             for (const file of validFiles) {
                 const storageRef = ref(storage, `images/${file.name}-${new Date().getMilliseconds()}-${new Date().getSeconds()}`);
@@ -55,7 +61,6 @@ const App = () => {
         try {
             const updatedImageUrls = img.filter(imgUrl => imgUrl !== url);
             setImg(updatedImageUrls);
-
             const storageRef = ref(storage, url);
             await deleteObject(storageRef);
         } catch (error) {
@@ -111,19 +116,21 @@ const App = () => {
                 </div>
                 <div className="md:w-[70%]">
                     <form onSubmit={handleSubmit}>
-                        <div className="input_container ">
+                        <div className="input_container mb-3">
                             <p className='text-red-600'>*Maksimum 5 şəkil yükləyə bilərsiniz.</p>
-                            <label htmlFor="files" className='w-max'>Şəkil əlavə et<span className='text-red-600'>*</span></label>
-                            <div className="grid grid-cols-3 gap-3 max-[1200px]:grid-cols-2 max-md:grid-cols-1">
-                                {img.map((url, inx) => (
-                                    <>
-                                        <div className='flex flex-col '>
-                                            <img src={url} className='w-[250px] max-[1200px]:w-[200px] max-[1200px]:h-[120px] duration-300 object-cover h-[150px] max-md:w-[60%] mx-auto max-md:h-[auto]' alt="" />
-                                            <button className='relative w-full right-2 underline md:text-[18px] text-black' onClick={(e) => handleDelete(url, e)}>Şəkili sil</button>
-                                        </div>
-                                    </>
-                                ))}
-                            </div>
+                            <label htmlFor="files" className='w-max '>Şəkil əlavə et<span className='text-red-600'>*</span></label>
+                            {load ? <div className='flex justify-center scale-75'><FadeLoader color='#00172E' /></div> :
+                                <div className="grid grid-cols-3 gap-3 max-[1200px]:grid-cols-2 max-md:grid-cols-1">
+                                    {img.map((url, inx) => (
+                                        <>
+                                            <div className='flex flex-col '>
+                                                <img src={url} className='w-[250px] max-[1200px]:w-[200px] max-[1200px]:h-[120px] duration-300 object-cover h-[150px] max-md:w-[60%] mx-auto max-md:h-[auto]' alt="" />
+                                                <button className='relative w-full right-2 underline md:text-[18px] text-black' onClick={(e) => handleDelete(url, e)}>Şəkili sil</button>
+                                            </div>
+                                        </>
+                                    ))}
+                                </div>
+                            }
                             <input onChange={handleFileChange} accept='image/png,image/jpeg,image/webp,image/bmp' multiple required id="files" className='hidden ' name='' type="file" />
                         </div>
                         <div className="relative max-md:flex max-md:flex-col">

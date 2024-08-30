@@ -9,12 +9,17 @@
   font-weight: 400;
 }
 
+.text-shadow {
+  text-shadow: 0px 0px 10px rgba(0, 0, 0);
+}
+
 @font-face {
   font-family: "Brockmann";
   src: url("/public/fonts/brockmann-medium.otf");
 }
+
 @font-face {
-  font-family:"Spartan" ;
+  font-family: "Spartan";
   src: url("/public/fonts/Spartan-Regular.ttf");
 }
 
@@ -28,6 +33,7 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
 label[for="files"] {
   border-radius: 10px;
   padding: 5px 0px;
@@ -39,8 +45,9 @@ label[for="files"] {
 .font-brockmann {
   font-family: "Brockmann";
 }
-.spartan{
-  font-family:"Spartan" ;
+
+.spartan {
+  font-family: "Spartan";
 }
 
 .gradient-text {
@@ -58,6 +65,7 @@ label[for="files"] {
   background-clip: text;
   color: transparent;
 }
+
 .gradient-blues {
   font-weight: bold;
   background-image: radial-gradient(circle, #31567c, #244567, #173553, #0a2640, #00172e);
@@ -139,7 +147,7 @@ button:hover>.shake {
   visibility: collapse;
 }
 
-.info:hover + .xahis {
+.info:hover+.xahis {
   opacity: 1;
   visibility: visible;
 }
