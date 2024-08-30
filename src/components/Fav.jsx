@@ -58,8 +58,7 @@ const App = () => {
 
     const dataRef = doc(db, "favorites", "WUnVJameS65ord2khDNv");
     const [infos, infoload] = useCollectionData(collection(db, "favorites"));
-    // Object.keys(infos[0][user.uid]).map(item => console.log(item))
-    // console.log(allData && allData.filter(item => Object.keys(infos[0][user.uid]).includes(item.id)))
+  
     const userFavorites = (infos && infos[0] && infos[0][user.uid]) ? Object.keys(infos[0][user.uid]) : [];
 
     const filteredData = allData && allData.filter(item => userFavorites.includes(item.id));
@@ -86,7 +85,6 @@ const App = () => {
             <button onClick={handleUp} className='text-[20px] bg-[#98BFFC] fixed bottom-0 md:m-10 m-6 my-20 p-3 rounded-md right-0 z-40'><FaArrowUp /></button>
 
             <h1 className='text-[35px] max-lg:text-[25px] py-5 space-grotesk'>Seçilmişlər</h1>
-            {/* {console.log(userData.filter(item => item.select))} */}
             {/* -[#313641] */}
             <div>
                 {filteredData.length > 0 ?
@@ -98,7 +96,6 @@ const App = () => {
                                         <div className='max-[556px]:w-full'>
                                             <button onClick={(e) => handleDec(e, item.id)} className={`absolute z-20 bg-[#CED0CF] ${count[item.id] == 0 ? "opacity-20 pointer-events-none" : "opacity-30"} group-hover:opacity-100 duration-300 text-black p-3 top-20 `}><IoIosArrowBack /></button>
                                             <div className={`absolute text-[25px] right-0 p-2 cursor-pointer z-30 text-red-500`} onClick={e => handleDelete(item.id)}><FaHeart /></div>
-                                            {/* {console.log(infos[0].info.find(item=>item.id))} */}
                                             <h4 className='absolute right-0 bottom-0 p-3 text-[12px]  spartan font-semibold z-30'>AlOyna.az</h4>
                                             <img src={item.imageUrls[count[item.id]]} alt="" className='w-[250px] group-hover:scale-110  max-[556px]:w-full max-[1200px]:w-[220px] max-md:w-[250px] max-md:h-[150px] duration-300 max-[1200px]:h-[150px] h-[220px] object-cover' />
                                             <button onClick={(e) => handleInc(e, item.id)} className={`absolute  z-20 bg-[#CED0CF] ${maxImg < count[item.id] + 1 ? "opacity-20 pointer-events-none" : "opacity-30"}  group-hover:opacity-100 duration-300 text-black p-3 top-20 right-0`}><IoIosArrowForward /></button>

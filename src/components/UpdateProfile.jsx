@@ -60,7 +60,6 @@ const UpdateProfile = () => {
             photoURL: ""
         })
     }
-    console.log(name)
     return (
         <div className='space-grotesk py-5'>
             <h1 className='text-[35px] max-lg:text-[25px] py-5 space-grotesk'>Profil yenilə</h1>

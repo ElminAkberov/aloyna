@@ -13,9 +13,6 @@ const Details = () => {
 
   const allDataRef = collection(db, "users");
   const [allData, allLoading] = useCollectionData(allDataRef);
-  console.log(allData && allData?.filter(item => item.id == params))
-  // const userQuery = user ? query(allDataRef, where("userId", "==", user.uid)) : null;
-  // const [userData, userLoading] = useCollectionData(userQuery);
 
   let [maxImg, setMaxImg] = useState(0)
   let [count, setCount] = useState(0)

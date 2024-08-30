@@ -26,7 +26,6 @@ export default function Header() {
       <Navigate to={"/sign-in"} />
     )
   }
-  // console.log(user)
   return (
     <Disclosure as="nav" className="bg-[#212630] ">
       <div className="mx-auto max-w-7xl px-8 ">

@@ -104,7 +104,6 @@ const Update = () => {
     if (userData && !(userData.filter(item => item.id === params).length > 0)) {
         return <Navigate to={"/add"} />
     }
-    // console.log(userData)
     return (
         <div className='space-grotesk'>
             <h1 className='text-[35px] max-lg:text-[25px] py-5'>Düzəliş et</h1>
