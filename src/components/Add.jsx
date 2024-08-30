@@ -82,8 +82,9 @@ const App = () => {
                 imageUrls: img
             });
             setName("");
-            setFiles([])
-            // navigate("/user")
+            setFiles([]) 
+
+            navigate("/user")
         } else {
             console.log("Kullanıcı oturum açmamış");
         }
