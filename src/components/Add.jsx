@@ -28,9 +28,14 @@ const App = () => {
         const maxFileSize = 2 * 1024 * 1024;
         const validFiles = files.filter(file => file.size <= maxFileSize);
         const invalidFiles = files.filter(file => file.size > maxFileSize);
+        const maxFiles = 5;
 
         if (invalidFiles.length > 0) {
             alert('Bəzi şəkillər 2 MB\'ı aşan ölçülərdədi. Xahiş olunur uyğun ölçüdə şəkillər seçin.');
+        }
+        if (validFiles.length > maxFiles) {
+            alert(`Maksimum ${maxFiles} şəkil yükləyə bilərsiniz.`);
+            return;
         }
         let fileUrls = [];
         if (validFiles.length > 0) {
@@ -82,7 +87,7 @@ const App = () => {
                 imageUrls: img
             });
             setName("");
-            setFiles([]) 
+            setFiles([])
             navigate("/user")
         } else {
             console.log("Kullanıcı oturum açmamış");
@@ -95,7 +100,7 @@ const App = () => {
     return (
         <div className='space-grotesk text-[#00172E]'>
             <h1 className='text-[35px] max-lg:text-[25px] py-5 text-white text-center'>Yeni Elan</h1>
-            <div className="bg-white/90 md:flex relative p-8 px-10 max-md:p-6 duration-300 rounded-lg">
+            <div className="bg-white/90 md:flex gap-x-3 relative p-8 px-10 max-md:p-6 duration-300 rounded-lg">
                 <div className="order-2 md:w-[30%] max-md:mb-5">
                     Elan şərtləri
                     <p><span className='text-red-600'>*</span>Satışa çıxarılan oyunlar haqqında doğru və tam məlumat təqdim edilməlidir. Yalan məlumat vermək qadağandır.</p>
@@ -107,6 +112,7 @@ const App = () => {
                 <div className="md:w-[70%]">
                     <form onSubmit={handleSubmit}>
                         <div className="input_container ">
+                            <p className='text-red-600'>*Maksimum 5 şəkil yükləyə bilərsiniz.</p>
                             <label htmlFor="files" className='w-max'>Şəkil əlavə et<span className='text-red-600'>*</span></label>
                             <div className="grid grid-cols-3 gap-3 max-[1200px]:grid-cols-2 max-md:grid-cols-1">
                                 {img.map((url, inx) => (
@@ -149,7 +155,7 @@ const App = () => {
                         </div>
                         <div className="relative max-md:flex max-md:flex-col">
                             <label htmlFor="name" className='absolute'>Elanın sahibi:</label>
-                            <input type="text" name='name' minLength={3} onChange={e => handleAdd(e)} required className='text-black md:w-[30%] max-md:w-full outline-[#AFDAED] px-2 md:ml-28 mb-5 max-md:mt-6' maxLength={18}  />
+                            <input type="text" name='name' minLength={3} onChange={e => handleAdd(e)} required className='text-black md:w-[30%] max-md:w-full outline-[#AFDAED] px-2 md:ml-28 mb-5 max-md:mt-6' maxLength={18} />
                         </div>
                         <div className="relative  max-md:flex max-md:flex-col">
                             <label htmlFor="number" className='absolute'>Mobil nömrə:</label>
