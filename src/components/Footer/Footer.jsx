@@ -50,7 +50,7 @@ const Footer = () => {
             </div>
             <div className="flex text-[20px] justify-center gap-x-2 ">
               <NavLink to={"https://www.instagram.com/aloyna.az/"} target='_blank'><FaInstagram /></NavLink>
-              <NavLink><FaFacebookF /></NavLink>
+              <NavLink target='_blank' to={"https://www.facebook.com/profile.php?id=61565227496842&is_tour_dismissed"}><FaFacebookF /></NavLink>
               <NavLink><FaXTwitter /></NavLink>
             </div>
           </div>

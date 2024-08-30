@@ -50,7 +50,7 @@ const Details = () => {
       setLoad(false)
     }, 1000)
   }, [])
-
+  
   if (load) {
     return (
       <div className='w-full absolute flex justify-center items-center left-0 top-0 h-[100vh] z-40 bg-[#171A21] '>
@@ -98,7 +98,7 @@ const Details = () => {
             </div>
             <hr className='border border-[#AFDAED]' />
             <div className="">
-              <h3 className='text-[20px] max-lg:text-[18px] max-md:text-[16px] my-2'>Elan sahibi : <span className='spartan'>{user.displayName}</span></h3>
+              <h3 className='text-[20px] max-lg:text-[18px] max-md:text-[16px] my-2'>Elan sahibi : <span className='spartan'>{item.info.name}</span></h3>
               <p className='text-[20px] max-lg:text-[18px] max-md:text-[16px] '>Əlaqə : <span className='spartan'>{item.info.number}</span></p>
             </div>
           </div>

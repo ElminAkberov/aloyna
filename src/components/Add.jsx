@@ -148,6 +148,10 @@ const App = () => {
                                 <p className='md:ml-28 text-[13px] mb-3'>max 500 söz</p>
                             </div>
                         </div>
+                        <div className="relative max-md:flex max-md:flex-col">
+                            <label htmlFor="name" className='absolute'>Elanın sahibi:</label>
+                            <input type="text" name='name' minLength={3} onChange={e => handleAdd(e)} required className='text-black md:w-[30%] max-md:w-full outline-[#AFDAED] px-2 md:ml-28 mb-5 max-md:mt-6' maxLength={18}  />
+                        </div>
                         <div className="relative  max-md:flex max-md:flex-col">
                             <label htmlFor="number" className='absolute'>Mobil nömrə:</label>
                             <input type="text" onChange={e => handleAdd(e)} required name='number' minLength={13} maxLength={13} placeholder='Məs.051-XXX-XX-XX' className='text-black px-2 outline-[#AFDAED] md:w-[30%] text-[15px] w-full md:ml-28 md:mb-5 max-md:mt-6' />
