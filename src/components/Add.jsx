@@ -83,7 +83,6 @@ const App = () => {
             });
             setName("");
             setFiles([]) 
-
             navigate("/user")
         } else {
             console.log("Kullanıcı oturum açmamış");
@@ -91,7 +90,6 @@ const App = () => {
 
 
     };
-    console.log(cat)
 
 
     return (
