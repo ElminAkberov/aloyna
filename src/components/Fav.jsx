@@ -82,7 +82,7 @@ const App = () => {
         );
     }
     return (
-        <div className={`space-grotesk ${filteredData.length <= 4 && "md:h-[80vh]"}`}>
+        <div className={`space-grotesk ${filteredData.length <= 4 && "lg:h-[80vh]"}`}>
             <button onClick={handleUp} className='text-[20px] bg-[#98BFFC] fixed bottom-0 md:m-10 m-6 my-20 p-3 rounded-md right-0 z-40'><FaArrowUp /></button>
 
             <h1 className='text-[35px] max-lg:text-[25px] py-5 space-grotesk'>Seçilmişlər</h1>
