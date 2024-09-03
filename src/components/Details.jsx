@@ -68,7 +68,7 @@ const Details = () => {
                 <span className='text-shadow'>{item.imageUrls.length}</span>
               </div>
               <IoMdClose onClick={() => setOpen(!open)} className='text-[35px]  drop-shadow-[0_0_8px_#171A21] font-bold cursor-pointer absolute z-50 right-10' />
-              <img src={item.imageUrls[count[item.id]]} alt="" className='w-auto mx-auto relative h-full   duration-300  object-cover ' />
+              <img src={item.imageUrls[count[item.id]]} alt="" className='w-auto mx-auto relative  duration-300  object-cover ' /> {/*h-full*/}
               <h4 className='absolute right-0 bottom-0 p-3  spartan font-semibold opacity-75'>AlOyna.az</h4>
               <button onClick={(e) => handleDec(e, item.id)} className={`absolute z-20 bg-[#CED0CF] ${count[item.id] == 0 ? "opacity-20 pointer-events-none" : "opacity-30"} group-hover:opacity-100 duration-300 text-black p-3 top-0 h-full left-0  `}><IoIosArrowBack /></button>
               <button onClick={(e) => handleInc(e, item.id)} className={`absolute  z-20 bg-[#CED0CF] ${maxImg < count[item.id] + 1 ? "opacity-20 pointer-events-none" : "opacity-30"}  group-hover:opacity-100 duration-300 text-black p-3 top-0 h-full right-0`}><IoIosArrowForward /></button>
@@ -78,11 +78,11 @@ const Details = () => {
             <div className="absolute w-full ">
               <img src={item.imageUrls[count[item.id]]} alt="" className='w-full opacity-20 h-[500px] max-lg:h-[400px] max-md:h-[300px]  mx-auto duration-300 group-hover:scale-110 rounded-t-md object-cover ' />
             </div>
-            <div className="absolute z-20 text-center md:text-[25px] w-full bottom-0 ">
+            <div className="absolute z-20 text-center md:text-[25px] w-full bottom-0">
               <span className='text-shadow'>{count[item.id] + 1} / </span>
               <span className='text-shadow'>{item.imageUrls.length}</span>
             </div>
-            <img onClick={() =>{setOpen(!open);window.scrollTo(0,0)} } src={item.imageUrls[count[item.id]]} alt="" className='w-[800px] relative h-[500px] max-lg:h-[400px] max-md:h-[300px] max-lg:scale-90 mx-auto duration-300 group-hover:scale-110 rounded-t-md object-cover ' />
+            <img onClick={() =>{setOpen(!open);window.scrollTo(0,0)} } src={item.imageUrls[count[item.id]]} alt="" className='w-[800px] relative h-[500px] max-lg:h-[400px] max-md:h-[300px] max-lg:scale-90 mx-auto duration-300 group-hover:scale-110 rounded-t-md object-contain ' />
             <h4 className='absolute right-0 bottom-0 p-3  spartan font-semibold'>AlOyna.az</h4>
             <button onClick={(e) => handleDec(e, item.id)} className={`absolute h-full z-20 bg-[#CED0CF] ${count[item.id] == 0 ? "opacity-10 pointer-events-none" : "opacity-20"} group-hover:opacity-100 duration-300 text-black p-3 top-0 left-0  `}><IoIosArrowBack /></button>
             <button onClick={(e) => handleInc(e, item.id)} className={`absolute h-full  z-20 bg-[#CED0CF] ${maxImg > count[item.id] ? "opacity-10 pointer-events-none" : "opacity-20"}  group-hover:opacity-100 duration-300 text-black p-3 top-0 right-0`}><IoIosArrowForward /></button>
