@@ -21,11 +21,11 @@ export default function Header() {
       </div>
     )
   }
-  if (!user) {
-    return (
-      <Navigate to={"/sign-in"} />
-    )
-  }
+  // if (!user) {
+  //   return (
+  //     <Navigate to={"/sign-in"} />
+  //   )
+  // }
   return (
     <Disclosure as="nav" className="bg-[#212630] ">
       <div className="mx-auto max-w-7xl px-8 ">
@@ -51,50 +51,70 @@ export default function Header() {
                     </div>
                   </div>
                 </div>
-               
-                <button className='bg-[#98BFFC]  font-semibold hover:text-[#98BFFC] hover:bg-[#171A21] flex duration-[400ms] gap-x-1 px-1   items-center justify-center text-[#212630] w-[15%] max-[1200px]:w-[25%] max-lg:w-[30%] rounded-md'>
-                  <NavLink to={"/add"} className={''}> <p className='py-1'>Yeni Elan</p> </NavLink>
-                  <FiPlusCircle />
-                </button>
+                {!user ?
+                  <>
+                    <button className='bg-[#98BFFC]  font-semibold hover:text-[#98BFFC] hover:bg-[#171A21] flex duration-[400ms] gap-x-1 px-1   items-center justify-center text-[#212630] w-[15%] max-[1200px]:w-[25%] max-lg:w-[30%] rounded-md'>
+                      <NavLink to={"/sign-in"} className='py-1'>Daxil ol</NavLink>
+                    </button>
+                    <button className='bg-[#171A21]  font-semibold hover:text-[#212630] hover:bg-[#98BFFC]  flex duration-[400ms] gap-x-1 px-1   items-center justify-center border border-[#98BFFC] text-[#98BFFC] w-[15%] max-[1200px]:w-[25%] max-lg:w-[30%] rounded-md'>
+                      <NavLink to={"/sign-up"} className='py-1'>Qeydiyyat</NavLink>
+                    </button>
+                  </>
+                  :
+                  <button className='bg-[#98BFFC]  font-semibold hover:text-[#98BFFC] hover:bg-[#171A21] flex duration-[400ms] gap-x-1 px-1   items-center justify-center text-[#212630] w-[15%] max-[1200px]:w-[25%] max-lg:w-[30%] rounded-md'>
+                    <NavLink to={"/add"} className={''}> <p className='py-1'>Yeni Elan</p> </NavLink>
+                    <FiPlusCircle />
+                  </button>
+                }
               </div>
             </div>
           </div>
-          <div className="absolute max-md:hidden inset-y-0 right-0 flex items-center pr-2 md:static md:inset-auto md:ml-6 md:pr-0">
+          {user &&
+            <div className="absolute max-md:hidden inset-y-0 right-0 flex items-center pr-2 md:static md:inset-auto md:ml-6 md:pr-0">
 
-            <Menu as="div" className="relative ml-3">
-              <div>
-                <MenuButton className="relative flex rounded-full bg-gray-800 text-md focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                  <span className="absolute -inset-1.5" />
-                  <span className="sr-only">Open user menu</span>
-                  <img
-                    alt=""
-                    src={`${((user.photoURL && user.photoURL.includes("undefined")) || !user.photoURL) ? "https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg" : user.photoURL} `}
-                    className="h-8 w-8 rounded-full object-cover"
-                  />
-                </MenuButton>
-              </div>
-              <MenuItems
-                transition
-                className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
-              >
-                <MenuItem>
-                  <NavLink to="/user" className="space-grotesk font-bold block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100">
-                    Profil
-                  </NavLink>
-                </MenuItem>
-                <MenuItem>
-                  <NavLink to="/fav" className="space-grotesk font-bold block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100">
-                    Seçilmişlər
-                  </NavLink>
-                </MenuItem>
-                <MenuItem>
-                  <NavLink onClick={handleClick} className="space-grotesk font-bold block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100">
-                    Çıxış et
-                  </NavLink>
-                </MenuItem>
-              </MenuItems>
-            </Menu>
-          </div>
+              <Menu as="div" className="relative ml-3">
+                <div>
+                  <MenuButton className="relative flex rounded-full bg-gray-800 text-md focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                    <span className="absolute -inset-1.5" />
+                    <span className="sr-only">Open user menu</span>
+                    {user ?
+                      <img
+                        alt=""
+                        src={`${((user.photoURL && user.photoURL.includes("undefined")) || !user.photoURL) ? "https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg" : user.photoURL} `}
+                        className="h-8 w-8 rounded-full object-cover"
+                      />
+                      :
+                      <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg"
+                        className="h-8 w-8 rounded-full object-cover"
+                        alt=""
+                      />
+                    }
+                  </MenuButton>
+                </div>
+                <MenuItems
+                  transition
+                  className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
+                >
+                  <MenuItem>
+                    <NavLink to="/user" className="space-grotesk font-bold block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100">
+                      Profil
+                    </NavLink>
+                  </MenuItem>
+                  <MenuItem>
+                    <NavLink to="/fav" className="space-grotesk font-bold block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100">
+                      Seçilmişlər
+                    </NavLink>
+                  </MenuItem>
+                  <MenuItem>
+                    <NavLink onClick={handleClick} className="space-grotesk font-bold block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100">
+                      Çıxış et
+                    </NavLink>
+                  </MenuItem>
+                </MenuItems>
+              </Menu>
+            </div>
+          }
         </div>
       </div>
     </Disclosure>

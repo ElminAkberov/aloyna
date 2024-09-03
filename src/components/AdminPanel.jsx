@@ -4,7 +4,7 @@ import { collection, query, where, getDocs, deleteDoc } from 'firebase/firestore
 import { db, auth, storage } from '../firebase';
 import { signOut, updateProfile } from 'firebase/auth';
 import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
-import { NavLink } from 'react-router-dom';
+import { Navigate, NavLink } from 'react-router-dom';
 import { PacmanLoader } from 'react-spinners';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
@@ -19,7 +19,7 @@ const AdminPanel = () => {
   let fav = localStorage.getItem("fav")
   let newFav = JSON.parse(fav)
 
- 
+
   const handleDelete = async (itemId) => {
     try {
       const q = query(collection(db, "users"), where("id", "==", itemId));
@@ -50,6 +50,11 @@ const AdminPanel = () => {
   const handleSignOut = () => {
     signOut(auth)
   }
+  if (!user) {
+    return (
+      <Navigate to={"/sign-in"} />
+    )
+  }
   if (userLoading) {
     return (
       <div className='w-full absolute flex justify-center items-center left-0 top-0 h-[100vh] z-40 bg-[#171A21] '>
@@ -65,7 +70,7 @@ const AdminPanel = () => {
       <h3 className='text-[30px] '>Xoş gəldin,<span className='font-bold'>{user.displayName}</span></h3>
       <NavLink to={"/fav"}><button className='underline md:hidden block'>Seçilmişlərə get</button></NavLink>
       <NavLink to={"/updateuser"}><button className='underline text-[17px] '>Profili yenilə</button></NavLink>
-      <div><button onClick={handleSignOut} className='underline md:hidden block'>Çıxış et</button></div>
+      <div><NavLink to={"/sign-in"} onClick={handleSignOut} className='underline md:hidden block'>Çıxış et</NavLink></div>
       <div className="flex flex-col mx-auto w-max">
         <h4 className='text-[25px] '>Elanlarım</h4>
         <hr className='border-blue-400 border-2' />
@@ -93,7 +98,7 @@ const AdminPanel = () => {
             </div>
           ))}
         </ul>
-        : <h3 className='text-[20px] text-center py-44'>Hal hazırda aktiv olan elanınız yoxdur <NavLink to={"/add"} className={"text-[#338cce] underline"}>Yeni elan yarat</NavLink></h3> 
+        : <h3 className='text-[20px] text-center py-44'>Hal hazırda aktiv olan elanınız yoxdur <NavLink to={"/add"} className={"text-[#338cce] underline"}>Yeni elan yarat</NavLink></h3>
         // py-[91.5px] 
       }
 

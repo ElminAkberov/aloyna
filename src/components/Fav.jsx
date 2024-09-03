@@ -5,7 +5,7 @@ import { db, auth } from '../firebase';
 import { updateProfile } from 'firebase/auth';
 import { GrGamepad } from 'react-icons/gr';
 import { MdGamepad } from 'react-icons/md';
-import { NavLink } from 'react-router-dom';
+import { Navigate, NavLink } from 'react-router-dom';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { CiHeart } from 'react-icons/ci';
 import { FaArrowUp, FaHeart } from 'react-icons/fa';
@@ -58,7 +58,7 @@ const App = () => {
 
     const dataRef = doc(db, "favorites", "WUnVJameS65ord2khDNv");
     const [infos, infoload] = useCollectionData(collection(db, "favorites"));
-  
+
     const userFavorites = (infos && infos[0] && infos[0][user.uid]) ? Object.keys(infos[0][user.uid]) : [];
 
     const filteredData = allData && allData.filter(item => userFavorites.includes(item.id));
@@ -72,6 +72,11 @@ const App = () => {
             [user.uid]: userFav
         })
         return userFav
+    }
+    if (!user) {
+        return (
+            <Navigate to={"/sign-in"} />
+        )
     }
     if (allLoading || userLoading) {
         return (

@@ -100,7 +100,11 @@ const App = () => {
 
 
     };
-
+    if (!user) {
+        return (
+            <Navigate to={"/sign-in"} />
+        )
+    }
 
     return (
         <div className='space-grotesk text-[#00172E]'>

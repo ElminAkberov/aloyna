@@ -35,11 +35,11 @@ const MainLayout = () => {
         )
     }
 
-    if (!user) {
-        return (
-            <Navigate to={"/sign-in"} />
-        )
-    }
+    // if (!user) {
+    //     return (
+    //         <Navigate to={"/sign-in"} />
+    //     )
+    // }
     return (
         <>
             <Header />
@@ -61,7 +61,11 @@ const MainLayout = () => {
                         </NavLink>
                         <NavLink to={"/user"}>
                             <div className='flex flex-col items-center'>
-                                <img src={`${(user.photoURL && user.photoURL.includes("undefined") || !user.photoURL) ? "https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg" : user.photoURL} `} className='w-[30px] h-[30px] mx-auto rounded-full object-cover' alt="" />
+                                {user ?
+                                    <img src={`${(user.photoURL && user.photoURL.includes("undefined") || !user.photoURL) ? "https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg" : user.photoURL} `} className='w-[30px] h-[30px] mx-auto rounded-full object-cover' alt="" />
+                                    :
+                                    <img className='w-[30px] h-[30px] mx-auto rounded-full object-cover' src="https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg" alt="" />
+                                }
                                 <h4>Profil</h4>
                             </div>
                         </NavLink>

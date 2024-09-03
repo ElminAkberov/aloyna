@@ -3,6 +3,7 @@ import { db, auth, storage } from '../firebase';
 import { deleteUser, updatePassword, updateProfile } from 'firebase/auth';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { Navigate } from 'react-router-dom';
 
 const UpdateProfile = () => {
     let [user, loading] = useAuthState(auth)
@@ -59,6 +60,11 @@ const UpdateProfile = () => {
         updateProfile(user, {
             photoURL: ""
         })
+    }
+    if (!user) {
+        return (
+            <Navigate to={"/sign-in"} />
+        )
     }
     return (
         <div className='space-grotesk py-5'>
