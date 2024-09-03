@@ -34,12 +34,6 @@ const MainLayout = () => {
             </div>
         )
     }
-
-    // if (!user) {
-    //     return (
-    //         <Navigate to={"/sign-in"} />
-    //     )
-    // }
     return (
         <>
             <Header />

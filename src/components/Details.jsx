@@ -82,7 +82,7 @@ const Details = () => {
               <span className='text-shadow'>{count[item.id] + 1} / </span>
               <span className='text-shadow'>{item.imageUrls.length}</span>
             </div>
-            <img onClick={() =>{setOpen(!open);window.scrollTo(0,0)} } src={item.imageUrls[count[item.id]]} alt="" className='w-[800px] relative h-[500px] max-lg:h-[400px] max-md:h-[300px] max-lg:scale-90 mx-auto duration-300 group-hover:scale-110 rounded-t-md object-contain ' />
+            <img onClick={() =>{setOpen(!open);window.scrollTo(0,0)} } src={item.imageUrls[count[item.id]]} alt="" className='w-[800px] relative h-[500px] max-lg:h-[400px] max-md:h-[300px] max-lg:scale-90 mx-auto duration-300 group-hover:scale-110 rounded-t-md object-cover ' />
             <h4 className='absolute right-0 bottom-0 p-3  spartan font-semibold'>AlOyna.az</h4>
             <button onClick={(e) => handleDec(e, item.id)} className={`absolute h-full z-20 bg-[#CED0CF] ${count[item.id] == 0 ? "opacity-10 pointer-events-none" : "opacity-20"} group-hover:opacity-100 duration-300 text-black p-3 top-0 left-0  `}><IoIosArrowBack /></button>
             <button onClick={(e) => handleInc(e, item.id)} className={`absolute h-full  z-20 bg-[#CED0CF] ${maxImg > count[item.id] ? "opacity-10 pointer-events-none" : "opacity-20"}  group-hover:opacity-100 duration-300 text-black p-3 top-0 right-0`}><IoIosArrowForward /></button>
