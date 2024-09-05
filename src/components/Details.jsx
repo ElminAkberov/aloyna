@@ -16,6 +16,7 @@ const Details = () => {
 
   let [maxImg, setMaxImg] = useState(0)
   let [count, setCount] = useState(0)
+
   useEffect(() => {
     let obj = {}
     allData && allData?.map(item => { obj[item.id] = 0 })
@@ -32,12 +33,14 @@ const Details = () => {
       [itemId]: maxImg[itemId] > prev[itemId] ? prev[itemId] + 1 : prev[itemId],
     }))
   }
+
   const handleDec = (e, itemId) => {
     setCount(prev => ({
       ...prev,
       [itemId]: prev[itemId] > 0 ? prev[itemId] - 1 : prev[itemId]
     }))
   }
+
   let [open, setOpen] = useState(false)
   let [load, setLoad] = useState(false)
 
@@ -55,6 +58,7 @@ const Details = () => {
       </div>
     )
   }
+  
   return (
     <div className='space-grotesk '>
       <h3 className={`text-[35px] max-lg:text-[25px]  py-5 ${open && "opacity-20"}`}>Elan haqqında</h3>
